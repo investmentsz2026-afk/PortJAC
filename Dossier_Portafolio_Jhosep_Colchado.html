@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dossier Ejecutivo & Portafolio Completo | Jhosep Colchado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #6366f1;
+            --accent-purple: #8b5cf6;
+            --emerald: #059669;
+            --amber: #d97706;
+            --rose: #e11d48;
+            --dark-900: #0b1120;
+            --dark-800: #1e293b;
+            --dark-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #0f172a;
+            background: #ffffff;
+            line-height: 1.5;
+            font-size: 11px;
+        }
+
+        @page {
+            size: A4 portrait;
+            margin: 14mm 14mm 14mm 14mm;
+        }
+
+        .page-break {
+            page-break-before: always;
+            break-before: page;
+        }
+
+        .avoid-break {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* Header / Cover Bar */
+        .cover-header {
+            background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 60%, #0c4a6e 100%);
+            color: #ffffff;
+            padding: 24px 26px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .cover-header::after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .profile-img-wrap {
+            width: 96px;
+            height: 96px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 3px solid #38bdf8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            background: #1e293b;
+        }
+
+        .profile-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .candidate-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 4px;
+        }
+
+        .candidate-subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .candidate-tagline {
+            font-size: 11px;
+            color: #cbd5e1;
+            line-height: 1.4;
+            max-width: 580px;
+        }
+
+        .contact-box {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 10px;
+            line-height: 1.6;
+            color: #e2e8f0;
+            min-width: 220px;
+        }
+
+        .contact-box strong {
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Top Metrics Row */
+        .metrics-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .metric-cell {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 3.5px solid var(--primary);
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.1;
+        }
+
+        .metric-label {
+            font-size: 9.5px;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 3px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Section Headings */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-pill {
+            background: #0f172a;
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        .section-desc {
+            font-size: 10px;
+            color: var(--slate-500);
+            margin-left: auto;
+            font-style: italic;
+        }
+
+        /* Bento Summary */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .summary-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .summary-card h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .summary-card p {
+            font-size: 10px;
+            color: #334155;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        /* Experience Cards */
+        .exp-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .exp-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 13px 15px;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--primary);
+        }
+
+        .exp-card.green { border-left-color: #10b981; }
+        .exp-card.violet { border-left-color: #8b5cf6; }
+        .exp-card.cyan { border-left-color: #06b6d4; }
+        .exp-card.amber { border-left-color: #f59e0b; }
+        .exp-card.rose { border-left-color: #f43f5e; }
+        .exp-card.indigo { border-left-color: #6366f1; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .exp-role-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .exp-company {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-top: 1px;
+        }
+
+        .exp-meta {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9.5px;
+        }
+
+        .exp-date {
+            font-weight: 700;
+            color: #0f172a;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .exp-location {
+            color: var(--slate-500);
+            margin-top: 2px;
+        }
+
+        .exp-desc {
+            font-size: 10px;
+            color: #334155;
+            line-height: 1.48;
+            margin-bottom: 8px;
+        }
+
+        .exp-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            background: #f8fafc;
+            padding: 7px 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .highlight-item {
+            font-size: 9px;
+            line-height: 1.3;
+        }
+
+        .highlight-val {
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'JetBrains Mono', monospace;
+            display: block;
+        }
+
+        .highlight-lbl {
+            color: var(--slate-500);
+            font-size: 8.5px;
+        }
+
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8.5px;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tech-tag.primary {
+            background: #e0f2fe;
+            color: #0369a1;
+            border-color: #bae6fd;
+        }
+
+        .tech-tag.purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+            border-color: #e9d5ff;
+        }
+
+        .tech-tag.emerald {
+            background: #d1fae5;
+            color: #065f46;
+            border-color: #a7f3d0;
+        }
+
+        /* Projects Table / Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .project-card.featured {
+            border: 1.5px solid #0284c7;
+            background: #fafcff;
+        }
+
+        .project-top {
+            margin-bottom: 6px;
+        }
+
+        .project-badge-cat {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-bottom: 4px;
+        }
+
+        .cat-ai { background: #f3e8ff; color: #7e22ce; }
+        .cat-enterprise { background: #dbeafe; color: #1e40af; }
+        .cat-web { background: #ccfbf1; color: #0f766e; }
+        .cat-mobile { background: #ffedd5; color: #c2410c; }
+        .cat-automation { background: #fef08a; color: #854d0e; }
+
+        .project-title {
+            font-size: 11px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+
+        .project-desc {
+            font-size: 9.5px;
+            color: #475569;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        /* Skills Matrix */
+        .skills-table-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .skill-group-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .skill-group-title {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #0f172a;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .skill-bar-row {
+            margin-bottom: 6px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 2px;
+        }
+
+        .skill-info span:last-child {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .progress-track {
+            height: 4.5px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #0284c7, #6366f1);
+        }
+
+        .progress-fill.purple { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+        .progress-fill.green { background: linear-gradient(90deg, #10b981, #06b6d4); }
+
+        /* Full Technology Reference Table */
+        .tech-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+            margin-top: 8px;
+        }
+
+        .tech-matrix-table th {
+            background: #0f172a;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-align: left;
+            padding: 6px 8px;
+            font-size: 8.5px;
+            text-transform: uppercase;
+        }
+
+        .tech-matrix-table td {
+            border: 1px solid #e2e8f0;
+            padding: 5px 8px;
+            vertical-align: top;
+            color: #334155;
+        }
+
+        .tech-matrix-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .domain-badge {
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        /* Footer Stamp */
+        .doc-footer {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #cbd5e1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 8.5px;
+            color: var(--slate-500);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .doc-footer strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: RESUMEN EJECUTIVO & EXPERIENCIA PROFESIONAL ================= -->
+    <header class="cover-header">
+        <div class="header-grid">
+            <div class="profile-img-wrap">
+                <img src="img/Ingeniero de software.png" alt="Jhosep Colchado">
+            </div>
+            <div>
+                <h1 class="candidate-title">Jhosep Colchado</h1>
+                <div class="candidate-subtitle">Lead Software Architect & Full Stack Engineer · AI & SaaS Specialist</div>
+                <p class="candidate-tagline">
+                    Ingeniero de Software egresado con especialización en Inteligencia Artificial. Arquitecto de SaaS Industriales (ERP/MRP/WMS), ecosistemas B2B de alta concurrencia, facturación electrónica certificada SUNAT UBL 2.1 e integración de pipelines de IA generativa (RAG, Groq Llama 3.3).
+                </p>
+            </div>
+            <div class="contact-box">
+                <div><strong>Email:</strong> colchadojhosep71@gmail.com</div>
+                <div><strong>Tel:</strong> +51 938 960 134</div>
+                <div><strong>Ubicación:</strong> Nuevo Chimbote, Perú</div>
+                <div><strong>Modalidad:</strong> Full-time / Remoto Global</div>
+                <div><strong>GitHub:</strong> github.com/Jhosep2408</div>
+                <div><strong>Idiomas:</strong> Español (Nativo) · Inglés</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Key Metrics Ribbon -->
+    <section class="metrics-strip">
+        <div class="metric-cell">
+            <div class="metric-value">20+ Proyectos</div>
+            <div class="metric-label">SaaS & Apps en Producción</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">100% SUNAT</div>
+            <div class="metric-label">UBL 2.1 & Guías GRE</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">&lt;300 ms</div>
+            <div class="metric-label">Inferencia Groq Cloud IA</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">40+ Sectores</div>
+            <div class="metric-label">Verticales RGPD Enterprise</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">Ingeniería & IA</div>
+            <div class="metric-label">Graduado Universitario 2025</div>
+        </div>
+    </section>
+
+    <!-- Executive Overview Bento -->
+    <div class="summary-grid avoid-break">
+        <div class="summary-card">
+            <h4><span style="color:var(--primary); font-size:12px;">■</span> Perfil Profesional & Filosofía de Ingeniería</h4>
+            <p>
+                Especialista en convertir desafíos de negocio y operacionales altamente complejos en plataformas web y móviles escalables, tolerantes a fallos y sin deuda técnica. Implemento estándares de <strong>Clean Architecture</strong>, <strong>Domain-Driven Design (DDD)</strong> y principios <strong>SOLID</strong>.
+            </p>
+            <p>
+                Experiencia integral abarcando el ciclo completo del software: ingeniería de requisitos, diseño de esquemas relacionales complejos (PostgreSQL/Prisma), desarrollo modular en microservicios (NestJS, Node.js), interfaces reactivas con Server Components (Next.js 15, React 19), pasarelas de pago (Stripe, Mercado Pago, Yape/Plin) y orquestación con Docker CI/CD y despliegues serverless.
+            </p>
+        </div>
+        <div class="summary-card">
+            <h4><span style="color:var(--accent); font-size:12px;">■</span> Áreas de Dominio Clave</h4>
+            <ul style="font-size:9.5px; color:#334155; line-height:1.6; padding-left:14px;">
+                <li><strong>SaaS ERP/MRP/WMS:</strong> Costeo industrial, Kardex inmutable y códigos de barras.</li>
+                <li><strong>Facturación Electrónica:</strong> XML UBL 2.1, CDRs, Guías de Remisión y firmas digitales.</li>
+                <li><strong>Inteligencia Artificial:</strong> RAG, Vector Embeddings, Groq Llama 3.3 y OpenAI.</li>
+                <li><strong>Streaming & Tiempo Real:</strong> WebRTC de ultra baja latencia con LiveKit y WebSockets.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Professional Experience Section -->
+    <div class="section-header">
+        <span class="section-pill">Experiencia</span>
+        <h2 class="section-title">Trayectoria & Experiencia Profesional Enterprise</h2>
+        <span class="section-desc">Sistemas empresariales en producción con impacto cuantificable</span>
+    </div>
+
+    <div class="exp-timeline">
+
+        <!-- Role 1: INVESTMENTS Z & G S.A. -->
+        <article class="exp-card green avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead Software Architect & Full Stack Engineer</h3>
+                    <div class="exp-company">INVESTMENTS Z & G S.A. — TextilERP Pro & Ecosistema Empresarial</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">Feb 2026 - Presente</span>
+                    <div class="exp-location">Lima, Perú · Manufactura & Retail</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                Lidero la dirección técnica y arquitectura de ingeniería de software en INVESTMENTS Z & G S.A. Diseñé e implementé la suite integral <strong>TextilERP Pro</strong> para automatizar el ciclo industrial de confección: costeo en vivo de prendas y avíos, trazabilidad de órdenes de corte por rollos, inventarios WMS valorizados con pistolas lectoras de código de barras industriales Zebra, módulo financiero de cobranzas por Letras de Cambio (30/60/90 días) y facturación electrónica UBL 2.1 certificada ante SUNAT.
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">100% Homologado</span>
+                    <span class="highlight-lbl">SUNAT Facturas, Boletas & Guías GRE</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Kardex Cero Margen Error</span>
+                    <span class="highlight-lbl">WMS Pistolas Zebra con ZPL/EPL</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Fintech Letras de Cambio</span>
+                    <span class="highlight-lbl">Fraccionamiento y semáforo de riesgo</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 14/15</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag primary">TypeScript</span>
+                <span class="tech-tag primary">PostgreSQL</span>
+                <span class="tech-tag primary">Prisma ORM</span>
+                <span class="tech-tag emerald">SUNAT UBL 2.1</span>
+                <span class="tech-tag emerald">Zebra Barcode</span>
+                <span class="tech-tag">Kardex FIFO/Promedio</span>
+                <span class="tech-tag">PDFKit</span>
+            </div>
+        </article>
+
+        <!-- Role 2: Alerta Violeta -->
+        <article class="exp-card violet avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead AI & GovTech Architect</h3>
+                    <div class="exp-company">Alerta Violeta — Contención Emocional con IA & 433 CEMs</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">2026</span>
+                    <div class="exp-location">Lima, Perú · GovTech & Crisis Response</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                Diseñé la arquitectura PWA de respuesta de emergencia y contención psicológica con IA generativa para el Perú. Desarrollé inferencia streaming ultrarrápida con Groq Cloud (Llama 3.3 70B a &lt;300ms), ingesta RAG de normativas y leyes peruanas (Ley 30364), protocolos de triaje clínico psicológico OMS/MIMP Línea 100, motor de georreferenciación de 433 Centros de Emergencia Mujer (CEM) en 1,830+ distritos y protocolos de escape seguro (Quick Exit) con borrado de historial.
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">&lt;300 ms Inferencia</span>
+                    <span class="highlight-lbl">Groq Cloud Llama 3.3 70B Streaming</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">433 CEMs Nacionales</span>
+                    <span class="highlight-lbl">1,830+ distritos geolocalizados</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Zero-Trace Privacy</span>
+                    <span class="highlight-lbl">Quick Exit y sustitución de historial</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag purple">Groq Cloud (Llama 3.3)</span>
+                <span class="tech-tag purple">Vercel AI SDK</span>
+                <span class="tech-tag purple">RAG Normativo</span>
+                <span class="tech-tag primary">Next.js App Router</span>
+                <span class="tech-tag primary">PostgreSQL / Prisma</span>
+                <span class="tech-tag">PWA Offline-First</span>
+                <span class="tech-tag">SheetJS</span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ================= PAGE 2: CONTINUACIÓN EXPERIENCIA & DOSSIERS SAAS ================= -->
+    <div class="page-break"></div>
+
+    <div class="section-header">
+        <span class="section-pill">Experiencia (Cont.)</span>
+        <h2 class="section-title">Trayectoria & Contratos Internacionales Enterprise</h2>
+        <span class="section-desc">Despliegues en España, México, Ecuador y Honduras</span>
+    </div>
+
+    <div class="exp-timeline">
+
+        <!-- Role 3: Labs24k España -->
+        <article class="exp-card cyan avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead AI & Full Stack Architect</h3>
+                    <div class="exp-company">Labs24k — Enterprise AI Platform, SaaS Suite & Franquicia Global</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">Abr 2026 - Jun 2026</span>
+                    <div class="exp-location">España · Enterprise AI & Franquicias</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                Dirigí la arquitectura de software e IA para la red de Franquicias Globales y suite SaaS multi-agente en España. Implementé portales corporativos 3D inmersivos con Three.js y WebGL a 60 FPS, calculadora de monopolio y reventa con métricas EBITDA al 60%, simulador Turing Test en vivo, flujos serverless en n8n, Supabase Edge Functions y orquestación multi-agente con estricto cumplimiento RGPD para 40+ verticales corporativas.
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">60 FPS WebGL / 3D</span>
+                    <span class="highlight-lbl">Three.js, React Three Fiber, GSAP</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">40+ Verticales B2B</span>
+                    <span class="highlight-lbl">Multi-agente con cumplimiento RGPD</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">SaaS CRM TanStack v5</span>
+                    <span class="highlight-lbl">Kanban Drag & Drop y automatización</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 14/16</span>
+                <span class="tech-tag primary">React 18/19</span>
+                <span class="tech-tag purple">Three.js / WebGL</span>
+                <span class="tech-tag purple">n8n / Apify</span>
+                <span class="tech-tag emerald">Supabase Edge Functions</span>
+                <span class="tech-tag">TanStack Query v5</span>
+                <span class="tech-tag">Framer Motion</span>
+            </div>
+        </article>
+
+        <!-- Role 4: México - BONOW & La Cava del Corte -->
+        <article class="exp-card amber avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead Full-Stack & Systems Architect</h3>
+                    <div class="exp-company">Ecosistema Enterprise México — BONOW (SaaS Cupones) & La Cava del Corte (FoodTech)</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">Jun 2026 - Oct 2026</span>
+                    <div class="exp-location">México · B2B2C Marketplace & FoodTech</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                Lideré la ingeniería y arquitectura de dos productos enterprise para importante cliente corporativo en México: <strong>BONOW</strong> (SaaS B2B2C de cupones con validador de canje físico por Código QR dinámico antifraude, pasarela Stripe MXN, mapa geolocalizado de sucursales y Ads Manager) y <strong>La Cava del Corte</strong> (plataforma FoodTech de carnes finas en Bahía de Banderas / Vallarta, con selector de términos de carne, pasarela Stripe + SPEI, y CPanel CMS autónomo con subidas directas Vercel Blob de hasta 5GB).
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">QR Antifraude Dinámico</span>
+                    <span class="highlight-lbl">Validación en tienda en tiempo real</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Stripe MXN + SPEI</span>
+                    <span class="highlight-lbl">Suscripciones recurrentes y transferencias</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Vercel Blob 5GB</span>
+                    <span class="highlight-lbl">Subidas cliente-servidor de alta capacidad</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 16</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag primary">PostgreSQL</span>
+                <span class="tech-tag emerald">Stripe API (MXN)</span>
+                <span class="tech-tag emerald">SPEI Bancario</span>
+                <span class="tech-tag">Vercel Blob 5GB</span>
+                <span class="tech-tag">Tailwind CSS v4</span>
+            </div>
+        </article>
+
+        <!-- Role 5: RossyFlowers & NecroGest Pro -->
+        <article class="exp-card rose avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead E-Commerce & SaaS Architect</h3>
+                    <div class="exp-company">Ecosistema RossyFlowers — Floristería E-Commerce & SaaS NecroGest Pro</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">2026</span>
+                    <div class="exp-location">Lima, Perú · Retail & Memorial SaaS</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                Desarrollé el ecosistema digital para Florería RossyFlowers en Lima: e-commerce reactivo con pedidos programados, motor de fletes dinámico por distrito, checkout híbrido (Mercado Pago SDK + Yape/Plin con carga de comprobantes) y tracking WhatsApp. Desarrollé adicionalmente <strong>NecroGest Pro</strong>, SaaS B2B para camposantos que reduce el 95% de la morosidad mediante zonificación de parcelas y generación automática de contratos membretados en 3 segundos con PDFKit.
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">Contratos en 3 Seg</span>
+                    <span class="highlight-lbl">Generación PDF automatizada membretada</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">-95% Morosidad</span>
+                    <span class="highlight-lbl">Cobranza periódica y zonificación</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">Checkout Omnicanal</span>
+                    <span class="highlight-lbl">Mercado Pago + Yape/Plin + WhatsApp</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 15 / React 19</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag primary">Neon PostgreSQL</span>
+                <span class="tech-tag emerald">Mercado Pago SDK</span>
+                <span class="tech-tag emerald">Yape / Plin</span>
+                <span class="tech-tag">PDFKit</span>
+                <span class="tech-tag">SheetJS</span>
+            </div>
+        </article>
+
+        <!-- Role 6 & 7: Ecuador & Honduras -->
+        <article class="exp-card indigo avoid-break">
+            <div class="exp-header">
+                <div>
+                    <h3 class="exp-role-title">Lead Architect & Systems Engineer (Ecuador & Honduras)</h3>
+                    <div class="exp-company">Plataformas High-Scale Ecuador (NexusPlay & LiveX) · ApexERP Pro (Honduras)</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">2025</span>
+                    <div class="exp-location">Ecuador & Honduras · FinTech, Gaming & Cloud ERP</div>
+                </div>
+            </div>
+            <p class="exp-desc">
+                <strong>Ecuador:</strong> Diseñé <strong>NexusPlay</strong> (SaaS de gamificación con 5 motores HTML5 en Phaser 3, IA BFS de búsqueda de caminos, billetera virtual con retiros reales a PayPal bajo transacciones ACID atómicas y monetización publicitaria continua) y <strong>LiveX</strong> (plataforma de live streaming con WebRTC LiveKit &lt;500ms, batallas PvP 2-columnas y regalos virtuales).<br>
+                <strong>Honduras:</strong> Diseñé <strong>ApexERP Pro</strong>, ERP Cloud para multisucursales con POS térmico ultra-rápido, arqueos de caja ciegos X/Z con auditoría Nodemailer, Kardex multialmacén valorizado y gestión de órdenes de trabajo para talleres.
+            </p>
+            <div class="exp-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-val">WebRTC &lt;500ms</span>
+                    <span class="highlight-lbl">LiveKit Cloud Streaming & Batallas PvP</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">5 Juegos Phaser 3</span>
+                    <span class="highlight-lbl">Billetera virtual y retiros PayPal</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-val">POS Ultra-Rápido</span>
+                    <span class="highlight-lbl">ApexERP Arqueos X/Z automáticos</span>
+                </div>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag purple">Phaser 3 Game Engine</span>
+                <span class="tech-tag purple">LiveKit WebRTC</span>
+                <span class="tech-tag emerald">PayPal SDK (ACID)</span>
+                <span class="tech-tag primary">Next.js 15</span>
+                <span class="tech-tag primary">PostgreSQL / Prisma</span>
+                <span class="tech-tag">POS Impresión Térmica</span>
+                <span class="tech-tag">Nodemailer</span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- ================= PAGE 3: CATÁLOGO COMPLETO DE PROYECTOS ================= -->
+    <div class="page-break"></div>
+
+    <div class="section-header">
+        <span class="section-pill">Catálogo Completo</span>
+        <h2 class="section-title">Portafolio de Proyectos & Soluciones Desarrolladas</h2>
+        <span class="section-desc">20 desarrollos clasificados por vertical y tecnologías</span>
+    </div>
+
+    <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-ai">IA & Franquicia</span>
+                <h4 class="project-title">1. Labs24k — Enterprise AI Platform & SaaS (España)</h4>
+                <p class="project-desc">Portal web 3D inmersivo (R3F, GSAP, 40+ landings dinámicas), SaaS CRM operativo multi-agente (Vite, Radix UI, TanStack Query v5, Kanban drag & drop) y motor serverless n8n con Supabase Edge Functions.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 14</span>
+                <span class="tech-tag purple">Three.js</span>
+                <span class="tech-tag purple">n8n</span>
+                <span class="tech-tag emerald">Supabase Edge</span>
+                <span class="tech-tag">jsPDF</span>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-ai">IA & Inversores</span>
+                <h4 class="project-title">2. Labs 24K — Plataforma Franquicia Global IA (España)</h4>
+                <p class="project-desc">Plataforma corporativa de ultra-alta conversión para red de centros de IA. Incluye 3D Hyperspeed WebGL, Calculadora Monopolio y Reventa (EBITDA 60%), simulador Turing Test en vivo y embudo de inversores (+50k€).</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 16</span>
+                <span class="tech-tag primary">React 19</span>
+                <span class="tech-tag purple">Three.js 3D</span>
+                <span class="tech-tag">Tailwind v4</span>
+                <span class="tech-tag">Nodemailer</span>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-web">Fintech & Gaming</span>
+                <h4 class="project-title">3. NexusPlay — Gamificación, Ad-Tech & Micro-Fintech</h4>
+                <p class="project-desc">SaaS con 5 motores de videojuegos HTML5 propios en Phaser 3 (IA BFS y generación procedural DFS), billetera virtual con retiros reales a PayPal (transacciones ACID) y Web Push Service Workers.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 15</span>
+                <span class="tech-tag purple">Phaser 3</span>
+                <span class="tech-tag emerald">PayPal SDK</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Monetag Ad-Tech</span>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-ai">GovTech & Crisis</span>
+                <h4 class="project-title">4. Alerta Violeta — IA & Respuesta de Emergencia (Perú)</h4>
+                <p class="project-desc">PWA con inferencia ultrarrápida Llama 3.3 (&lt;300ms vía Groq Cloud), protocolos clínicos OMS/MIMP Línea 100, arquitectura RAG normativo, 433 CEMs georreferenciados en 1,830+ distritos y botón de escape rápido.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag purple">Groq Llama 3.3</span>
+                <span class="tech-tag purple">Vercel AI SDK</span>
+                <span class="tech-tag primary">Next.js</span>
+                <span class="tech-tag">Prisma ORM</span>
+                <span class="tech-tag">PWA</span>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">Industrial ERP</span>
+                <h4 class="project-title">5. INVESTMENTS Z & G S.A. — TextilERP Pro & Smart Manufacturing</h4>
+                <p class="project-desc">SaaS industrial para confección textil: matriz algorítmica de tallas/colores, Kardex WMS con pistolas barcode Zebra, costeo en vivo, cobranzas por Letras de Cambio y facturación electrónica SUNAT UBL 2.1 & Guías GRE.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 14</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag emerald">SUNAT UBL 2.1</span>
+                <span class="tech-tag">Zebra ZPL</span>
+                <span class="tech-tag">PostgreSQL</span>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">Enterprise SaaS</span>
+                <h4 class="project-title">6. BONOW — SaaS & Marketplace B2B2C de Cupones (México)</h4>
+                <p class="project-desc">Marketplace comercial en México con feed inteligente, validación de canje físico por Código QR dinámico antifraude, membresías BONOW+ con Stripe (MXN), mapa de sucursales y Ads Manager.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 16</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag emerald">Stripe MXN</span>
+                <span class="tech-tag">QR Antifraude</span>
+                <span class="tech-tag">PostgreSQL</span>
+            </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">FoodTech CMS</span>
+                <h4 class="project-title">7. La Cava del Corte — Luxury FoodTech & CPanel CMS (México)</h4>
+                <p class="project-desc">E-commerce de lujo en Vallarta / Bahía de Banderas para Meat Boutique. Carrito con customizer de términos de carne, pasarela Stripe + SPEI con comprobantes y CMS autónomo con Vercel Blob de hasta 5GB.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 16</span>
+                <span class="tech-tag primary">React 19</span>
+                <span class="tech-tag emerald">Stripe API</span>
+                <span class="tech-tag">Vercel Blob 5GB</span>
+                <span class="tech-tag">SPEI</span>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="project-card featured avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-web">Streaming WebRTC</span>
+                <h4 class="project-title">8. LiveX — Live Streaming & Batallas PvP (Ecuador)</h4>
+                <p class="project-desc">Plataforma estilo TikTok Live para Ecuador: WebRTC ultra-low latency (&lt;500ms) vía LiveKit Cloud, pantalla dividida para batallas PvP 2-columnas, barra de puntos dinámica, billetera digital y regalos animados.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag purple">LiveKit WebRTC</span>
+                <span class="tech-tag primary">Next.js 14</span>
+                <span class="tech-tag">Neon Postgres</span>
+                <span class="tech-tag">Zustand</span>
+                <span class="tech-tag">PWA</span>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-web">E-Commerce & ERP</span>
+                <h4 class="project-title">9. Florería RossyFlowers — E-Commerce & ERP (Lima)</h4>
+                <p class="project-desc">Storefront con filtros en tiempo real, flete dinámico distrital, checkout híbrido (Mercado Pago SDK + Yape/Plin), suscripciones periódicas y panel ERP con reportes analíticos.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 15</span>
+                <span class="tech-tag emerald">Mercado Pago</span>
+                <span class="tech-tag emerald">Yape / Plin</span>
+                <span class="tech-tag">Recharts</span>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">Memorial SaaS</span>
+                <h4 class="project-title">10. NecroGest Pro — Memorial & Billing SaaS</h4>
+                <p class="project-desc">SaaS B2B para camposantos y concesionarias. Contratos legales membretados automáticos en 3 segundos, zonificación de parcelas, importador inteligente de Excel y reducción del 95% en morosidad.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 15</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag">PDFKit</span>
+                <span class="tech-tag">SheetJS</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">Cloud ERP & POS</span>
+                <h4 class="project-title">11. ApexERP Pro — POS Omnicanal & Cloud ERP (Honduras)</h4>
+                <p class="project-desc">ERP multisucursal: POS térmico de facturación rápida, arqueos de caja ciegos X/Z con auditoría Nodemailer, Kardex multialmacén valorizado, contabilidad libro diario y órdenes para talleres.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js 15</span>
+                <span class="tech-tag">Prisma ORM 6</span>
+                <span class="tech-tag">Nodemailer</span>
+                <span class="tech-tag">POS Térmico</span>
+            </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-web">EdTech & IA</span>
+                <h4 class="project-title">12. Control Asistencias Barcode & Chatbot IA</h4>
+                <p class="project-desc">Sistema de control institucional de alto tráfico. Escaneo de códigos de barra a milisegundos, chatbot GPT-4 integrado para consultas en lenguaje natural y alertas SMS/WhatsApp vía Twilio.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">Laravel 10</span>
+                <span class="tech-tag">PHP 8</span>
+                <span class="tech-tag purple">OpenAI API</span>
+                <span class="tech-tag">Twilio SMS</span>
+            </div>
+        </div>
+
+        <!-- Project 13 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-ai">AI Backend</span>
+                <h4 class="project-title">13. Agente Conversacional LLM con Memoria Contextual</h4>
+                <p class="project-desc">Microservicio backend asíncrono con FastAPI y Python. Pipelines de embeddings, memoria conversacional en Redis y consumo optimizado de modelos GPT y Claude vía streaming.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag purple">Redis Cache</span>
+                <span class="tech-tag">Docker</span>
+            </div>
+        </div>
+
+        <!-- Project 14 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-web">E-Commerce Real-time</span>
+                <h4 class="project-title">14. E-Commerce Enterprise con Métricas en Vivo</h4>
+                <p class="project-desc">Tienda reactiva con carrito optimista, pasarela Stripe, panel de control administrativo con gráficas de ventas en vivo vía WebSockets e inventario sincronizado.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag emerald">Stripe API</span>
+                <span class="tech-tag">Socket.io</span>
+            </div>
+        </div>
+
+        <!-- Project 15 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-mobile">Mobile App</span>
+                <h4 class="project-title">15. App Móvil Entrenamiento & Analytics Físico</h4>
+                <p class="project-desc">App multiplataforma en React Native: temporizadores de hipertrofia, sincronización en la nube con Firebase Firestore y gráficos de progreso físico visual.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Redux Toolkit</span>
+                <span class="tech-tag">TypeScript</span>
+            </div>
+        </div>
+
+        <!-- Project 16 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-ai">Visión Artificial</span>
+                <h4 class="project-title">16. Motor de Visión Computacional & Reconocimiento Facial</h4>
+                <p class="project-desc">Procesamiento de imágenes con OpenCV y Python: detección biométrica en tiempo real, extracción de texto OCR de documentos oficiales y etiquetado automático.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag purple">OpenCV</span>
+                <span class="tech-tag purple">TensorFlow</span>
+                <span class="tech-tag">Scikit-Learn</span>
+            </div>
+        </div>
+
+        <!-- Project 17 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-automation">Automatización</span>
+                <h4 class="project-title">17. Hub de Automatizaciones Multi-Canal (n8n + Webhooks)</h4>
+                <p class="project-desc">Infraestructura de automatización que sincroniza leads web, realiza prospección B2B mediante web scraping con Apify, emite alertas a Slack/WhatsApp y genera reportes ejecutivos.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag purple">n8n</span>
+                <span class="tech-tag purple">Apify Scraping</span>
+                <span class="tech-tag">Supabase</span>
+                <span class="tech-tag">Webhooks</span>
+            </div>
+        </div>
+
+        <!-- Project 18 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">Hardware & WMS</span>
+                <h4 class="project-title">18. WMS Pistolas Barcode & Kardex Inmutable</h4>
+                <p class="project-desc">Sistema especializado para terminales de almacén y lectores de código de barras industriales Zebra con soporte ZPL/EPL, entradas/salidas masivas y Kardex en vivo.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">Next.js</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag">Zebra EPL/ZPL</span>
+                <span class="tech-tag">PostgreSQL</span>
+            </div>
+        </div>
+
+        <!-- Project 19 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-enterprise">FinTech</span>
+                <h4 class="project-title">19. Módulo Financiero de Letras de Cambio & Cobranzas</h4>
+                <p class="project-desc">Sistema financiero automatizado para emisión, fraccionamiento a 30/60/90 días, protesto y seguimiento de amortizaciones de Letras de Cambio con semáforo de riesgo crediticio.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag primary">TypeScript</span>
+                <span class="tech-tag primary">NestJS</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">PDFKit</span>
+            </div>
+        </div>
+
+        <!-- Project 20 -->
+        <div class="project-card avoid-break">
+            <div class="project-top">
+                <span class="project-badge-cat cat-mobile">PWA Offline</span>
+                <h4 class="project-title">20. PWA Offline-First para Supervisión en Campo</h4>
+                <p class="project-desc">Aplicación Web Progresiva con almacenamiento local en IndexedDB y Service Workers que permite a inspectores registrar datos sin conexión con sincronización automática en la nube.</p>
+            </div>
+            <div class="tags-row">
+                <span class="tech-tag">PWA</span>
+                <span class="tech-tag">IndexedDB</span>
+                <span class="tech-tag">Service Workers</span>
+                <span class="tech-tag">JavaScript</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= PAGE 4: HABILIDADES, MATRIZ TECNOLÓGICA & EDUCACIÓN ================= -->
+    <div class="page-break"></div>
+
+    <div class="section-header">
+        <span class="section-pill">Competencias</span>
+        <h2 class="section-title">Dominio de Habilidades Técnicas & Métricas de Rendimiento</h2>
+        <span class="section-desc">Evaluación porcentual basada en benchmarks de producción</span>
+    </div>
+
+    <div class="skills-table-grid avoid-break">
+
+        <!-- Column 1: AI & Data Science -->
+        <div class="skill-group-box">
+            <div class="skill-group-title">
+                <span>Inteligencia Artificial & RAG</span>
+                <span style="color:var(--accent-purple); font-size:10px;">★ Lead</span>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Machine Learning & Modelos Predictivos</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill purple" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>LLMs, Groq Llama 3.3 & Vercel AI SDK</span>
+                    <span>88%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill purple" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Arquitecturas RAG & Vector Embeddings</span>
+                    <span>87%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill purple" style="width: 87%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Visión por Computadora (OpenCV)</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill purple" style="width: 80%;"></div></div>
+            </div>
+        </div>
+
+        <!-- Column 2: Full Stack & ERP -->
+        <div class="skill-group-box">
+            <div class="skill-group-title">
+                <span>Desarrollo Full Stack & ERP</span>
+                <span style="color:var(--primary); font-size:10px;">★ Expert</span>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>TypeScript / Next.js 15 & React 19</span>
+                    <span>96%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 96%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Node.js, NestJS & Modular Architecture</span>
+                    <span>94%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 94%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>PostgreSQL (Neon), Prisma & MySQL</span>
+                    <span>92%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Facturación SUNAT UBL 2.1 & WMS Kardex</span>
+                    <span>95%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+            </div>
+        </div>
+
+        <!-- Column 3: Cybersecurity, Linux & Infra -->
+        <div class="skill-group-box">
+            <div class="skill-group-title">
+                <span>Ciberseguridad, Linux & Infra</span>
+                <span style="color:var(--emerald); font-size:10px;">★ Senior</span>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Linux SysAdmin (Ubuntu/Debian) & Bash</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill green" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Hacking Ético, Pentesting & Antifraude</span>
+                    <span>85%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill green" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Streaming Real-Time WebRTC (LiveKit)</span>
+                    <span>92%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill green" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-bar-row">
+                <div class="skill-info">
+                    <span>Docker CI/CD & Servidores Cloud</span>
+                    <span>90%</span>
+                </div>
+                <div class="progress-track"><div class="progress-fill green" style="width: 90%;"></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Complete Technology Reference Table -->
+    <div class="section-header">
+        <span class="section-pill">Stack</span>
+        <h2 class="section-title">Matriz Integral de Tecnologías, Protocolos & Herramientas</h2>
+        <span class="section-desc">Ecosistema técnico dominado y aplicado</span>
+    </div>
+
+    <table class="tech-matrix-table avoid-break">
+        <thead>
+            <tr>
+                <th style="width: 22%;">Categoría</th>
+                <th style="width: 48%;">Tecnologías & Herramientas Dominadas</th>
+                <th style="width: 30%;">Estándares / Casos de Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="domain-badge">Frameworks & Frontend</td>
+                <td>Next.js 15/16 (App Router), React 19, Tailwind CSS v4, TanStack Query v5, Three.js / WebGL, React Three Fiber, GSAP, Radix UI, Framer Motion, Zustand</td>
+                <td>Server Components, 3D a 60 FPS, Dashboards reactivos en tiempo real</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Backend & Microservicios</td>
+                <td>NestJS, Node.js, Express, Laravel 10 (PHP 8), Python 3 (FastAPI, AsyncIO), RESTful APIs, WebSockets, Service Workers</td>
+                <td>Arquitectura modular hexagonal, Clean Architecture, concurrencia asíncrona</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Lenguajes de Programación</td>
+                <td>TypeScript, JavaScript (ESNext), Python 3, PHP 8, Bash Shell Scripting, Java, C#, C++, SQL, HTML5 / CSS3</td>
+                <td>Tipado estricto, scripts de automatización DevOps, rendimiento nativo</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Inteligencia Artificial & ML</td>
+                <td>Groq Cloud API (Llama 3.3 70B Versatile), Vercel AI SDK, OpenAI GPT-4 API, Pipelines RAG, Vector Embeddings, OpenCV, TensorFlow, Scikit-Learn</td>
+                <td>Inferencia streaming &lt;300ms, ingesta documental sin alucinaciones, visión biométrica</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Bases de Datos & Caché</td>
+                <td>PostgreSQL (Neon Serverless), Prisma ORM v6, MySQL / MariaDB, Redis In-Memory Cache, IndexedDB, Firebase Firestore</td>
+                <td>Consultas indexadas de alto tráfico, transacciones atómicas ACID, offline-first</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Cloud, DevOps & Linux</td>
+                <td>Linux SysAdmin (Ubuntu/Debian Server), Docker, Docker Compose, Vercel & Vercel Blob (5GB), Supabase Cloud & Edge Functions, Render, Railway, Git, GitHub Actions</td>
+                <td>Pipelines CI/CD automatizados, aislamiento de contenedores, almacenamiento masivo</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Streaming & Tiempo Real</td>
+                <td>LiveKit Cloud WebRTC, Socket.io, HTTP/2 Server-Sent Events (SSE), WebRTC Peer-to-Peer</td>
+                <td>Live streaming interactivo con latencia &lt;500ms, chats y batallas PvP en vivo</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Fintech & Pagos Digitales</td>
+                <td>Stripe API (MXN/USD, Webhooks, Suscripciones), Mercado Pago SDK, Yape QR, Plin, Transferencias SPEI con validación, PayPal SDK</td>
+                <td>Procesamiento bancario seguro, conciliación automática de pagos, checkout híbrido</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Facturación & Hardware</td>
+                <td>Facturación Electrónica SUNAT UBL 2.1 (XML, CDR, Hash, Firmas Digitales), Guías GRE, Impresoras Térmicas POS (ESC/POS), Impresoras Industriales Zebra (ZPL/EPL), Pistolas Barcode</td>
+                <td>Certificación tributaria en producción, control WMS de almacenes sin desfase</td>
+            </tr>
+            <tr>
+                <td class="domain-badge">Ciberseguridad & Antifraude</td>
+                <td>Hacking Ético, Pentesting Web (OWASP Top 10), QR Dinámicos Antifraude con HMAC, OAuth 2.0, JWT con rotación de tokens, Cumplimiento RGPD</td>
+                <td>Blindaje de datos de usuario, prevención de canjes duplicados, auditoría de accesos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Education & Certifications Strip -->
+    <div class="summary-grid avoid-break" style="margin-top: 14px;">
+        <div class="summary-card">
+            <h4><span style="color:var(--emerald); font-size:12px;">■</span> Formación Académica</h4>
+            <p><strong>Grado:</strong> Ingeniería de Software — Graduado (2025)</p>
+            <p><strong>Especialización:</strong> Inteligencia Artificial, Aprendizaje Automático y Sistemas Distribuidos</p>
+            <p style="font-size:9px; color:#64748b; margin-top:4px;">
+                Formación orientada a la ingeniería de sistemas escalables, matemáticas aplicadas para ML, optimización de algoritmos y gestión de proyectos tecnológicos de alta complejidad.
+            </p>
+        </div>
+        <div class="summary-card">
+            <h4><span style="color:var(--primary); font-size:12px;">■</span> Disponibilidad & Contratación</h4>
+            <p><strong>Modalidad:</strong> Full-Time / Contratos Remotos Globales</p>
+            <p><strong>Zona Horaria:</strong> UTC-5 (Flexible para LATAM, Norteamérica y Europa)</p>
+            <p><strong>Contacto Directo:</strong> colchadojhosep71@gmail.com</p>
+            <p style="font-size:9px; color:#0284c7; font-weight:700; margin-top:4px;">
+                ✓ Disponible para incorporación inmediata a equipos de alto rendimiento.
+            </p>
+        </div>
+    </div>
+
+    <!-- Executive Footer -->
+    <footer class="doc-footer avoid-break">
+        <div><strong>Jhosep Colchado</strong> · Lead Software Architect & Full Stack Engineer</div>
+        <div>Dossier Técnico Ejecutivo · Actualizado Octubre 2026</div>
+        <div>Página 1 a 4 · Documento Oficial</div>
+    </footer>
+
+</body>
+</html>
