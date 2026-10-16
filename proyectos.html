@@ -665,6 +665,135 @@
             font-family: 'JetBrains Mono', monospace;
             background: rgba(3, 7, 18, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            max-width: 100% !important;
+            word-break: break-word !important;
+        }
+
+        /* =============================================================
+         * ULTRA-RESPONSIVE MOBILE ENHANCEMENTS (< 640px & <= 480px)
+         * ============================================================= */
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none !important;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+        }
+
+        @media (max-width: 640px) {
+            /* General container padding */
+            main {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+
+            /* Header brand and controls fit cleanly on small screens (320px-375px) */
+            header nav {
+                padding-left: 0.65rem !important;
+                padding-right: 0.65rem !important;
+                padding-top: 0.45rem !important;
+                padding-bottom: 0.45rem !important;
+            }
+
+            /* Catalog Hero Title scaling */
+            main h1 {
+                font-size: 2rem !important;
+                line-height: 1.15 !important;
+            }
+            main h1 .gradient-text {
+                font-size: 1.65rem !important;
+                line-height: 1.25 !important;
+            }
+
+            /* Search input padding & counter badge */
+            #catalog-search {
+                padding-left: 2.5rem !important;
+                padding-right: 5rem !important;
+                font-size: 0.78rem !important;
+            }
+            #search-counter {
+                right: 0.65rem !important;
+                font-size: 0.62rem !important;
+            }
+
+            /* Stats Bar */
+            main .grid.grid-cols-2.sm\:grid-cols-4 {
+                gap: 0.5rem !important;
+            }
+            main .grid.grid-cols-2.sm\:grid-cols-4 p.font-bold {
+                font-size: 1.25rem !important;
+            }
+
+            /* Filter buttons */
+            .catalog-filter-btn {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+                padding-top: 0.4rem !important;
+                padding-bottom: 0.4rem !important;
+                font-size: 0.72rem !important;
+            }
+
+            /* Modal Container & Dialog */
+            #dossier-modal {
+                padding: 0.4rem !important;
+            }
+            #dossier-modal > div {
+                padding: 1rem !important;
+                max-height: 94vh !important;
+                border-radius: 1.25rem !important;
+            }
+            #dossier-modal button[onclick*="closeDossierModal"] {
+                top: 0.65rem !important;
+                right: 0.65rem !important;
+                width: 2rem !important;
+                height: 2rem !important;
+            }
+            #dossier-modal .space-y-1 {
+                padding-right: 2.25rem !important;
+            }
+            #dossier-modal h3 {
+                font-size: 1.2rem !important;
+                line-height: 1.25 !important;
+            }
+
+            /* Project Selector Tabs: horizontal swipe on mobile */
+            #dossier-modal .flex.flex-wrap.items-center.gap-2,
+            #dossier-modal .project-selector-bar {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                gap: 0.5rem !important;
+                padding-bottom: 0.65rem !important;
+            }
+            #dossier-modal button[id*="project-tab-"] {
+                flex-shrink: 0 !important;
+                white-space: nowrap !important;
+                padding: 0.45rem 0.75rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* Sub-tabs inside modal */
+            #dossier-modal button[id*="tab-btn-"] {
+                padding: 0.5rem 0.25rem !important;
+                font-size: 0.68rem !important;
+                line-height: 1.2 !important;
+            }
+
+            /* Footer responsive padding & text */
+            footer {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2rem !important;
+                padding-left: 0.85rem !important;
+                padding-right: 0.85rem !important;
+            }
         }
     </style>
 </head>
@@ -731,8 +860,30 @@
                     <i class="fas fa-download text-purple-400 text-xs"></i>
                     <span>CV</span>
                 </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl glass-panel text-slate-300 hover:text-white" aria-label="Abrir menú">
+                    <i class="fas fa-bars text-sm"></i>
+                </button>
             </div>
         </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-2 max-w-6xl mx-auto glass-panel rounded-2xl p-4 shadow-2xl border border-white/10 animate__animated animate__fadeIn">
+            <div class="grid grid-cols-2 gap-2 text-center">
+                <a href="index.html" class="col-span-2 p-2.5 rounded-xl bg-gradient-to-r from-cyan-950/60 to-blue-950/60 border border-cyan-500/40 text-cyan-300 hover:text-white text-xs font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-arrow-left text-[10px]"></i>
+                    <span data-i18n="nav_back_home">Volver al Portafolio</span>
+                </a>
+                <a href="index.html#sobre-mi" class="p-2.5 rounded-xl bg-white/5 hover:bg-indigo-600/20 text-xs font-medium text-slate-300 hover:text-white" data-i18n="nav_about">Sobre Mí</a>
+                <a href="index.html#experiencia" class="p-2.5 rounded-xl bg-white/5 hover:bg-indigo-600/20 text-xs font-medium text-slate-300 hover:text-white" data-i18n="nav_experience">Experiencia</a>
+                <a href="index.html#contacto" class="col-span-2 p-2.5 rounded-xl bg-white/5 hover:bg-indigo-600/20 text-xs font-medium text-slate-300 hover:text-white" data-i18n="nav_contact">Contacto</a>
+                <a href="img/CV_Jhosep_Colchado_Profesional.pdf" download class="col-span-2 p-2.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 hover:text-white text-xs font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-download text-xs"></i>
+                    <span>Descargar CV (PDF)</span>
+                </a>
+            </div>
+        </div>
     </header>
 
     <!-- Main Container -->
@@ -882,7 +1033,42 @@
                 <i class="fas fa-times"></i>
             </button>
 
-
+            <!-- Project Selector Header Tabs -->
+            <div class="project-selector-bar flex flex-nowrap sm:flex-wrap items-center gap-2 sm:gap-3 pb-3 border-b border-white/10 overflow-x-auto no-scrollbar scroll-smooth">
+                <button onclick="switchDossierProject('labs24k')" id="project-tab-labs24k" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                    <i class="fas fa-brain mr-1.5 text-cyan-400"></i> Labs24k (SaaS Multi-Agente)
+                </button>
+                <button onclick="switchDossierProject('labs24k-franquicia')" id="project-tab-labs24k-franquicia" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-crown mr-1.5 text-yellow-400"></i> Labs 24K (Franquicia IA )
+                </button>
+                <button onclick="switchDossierProject('nexusplay')" id="project-tab-nexusplay" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-gamepad mr-1.5 text-fuchsia-400"></i> NexusPlay (Phaser 3 & Ad-Tech)
+                </button>
+                <button onclick="switchDossierProject('alertavioleta')" id="project-tab-alertavioleta" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-heart-pulse mr-1.5"></i> Alerta Violeta (IA RAG Perú)
+                </button>
+                <button onclick="switchDossierProject('floralux')" id="project-tab-floralux" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-spa mr-1.5 text-rose-400"></i> Florería RossyFlowers (Perú )
+                </button>
+                <button onclick="switchDossierProject('livex')" id="project-tab-livex" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-play-circle mr-1.5"></i> LiveX (Streaming & PvP)
+                </button>
+                <button onclick="switchDossierProject('textilerp')" id="project-tab-textilerp" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-industry mr-1.5"></i> TextilERP (Manufactura)
+                </button>
+                <button onclick="switchDossierProject('necrogest')" id="project-tab-necrogest" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-cloud mr-1.5"></i> NecroGest (SaaS Recaudación)
+                </button>
+                <button onclick="switchDossierProject('lacavadelcorte')" id="project-tab-lacavadelcorte" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-utensils mr-1.5 text-amber-400"></i> La Cava del Corte (México )
+                </button>
+                <button onclick="switchDossierProject('apexerp')" id="project-tab-apexerp" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-cash-register mr-1.5 text-blue-400"></i> ApexERP Pro (POS & Cloud ERP)
+                </button>
+                <button onclick="switchDossierProject('bonow')" id="project-tab-bonow" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
+                    <i class="fas fa-ticket-alt mr-1.5 text-violet-400"></i> BONOW (SaaS & Cupones México )
+                </button>
+            </div>
 
             <!-- ================= VIEW 0C: ALERTA VIOLETA IA & CRISIS RESPONSE DOSSIER ================= -->
             <div id="dossier-view-alertavioleta" class="hidden space-y-6">
@@ -3054,6 +3240,25 @@
             }
         }
 
+        function openModal(key = 'labs24k') {
+            const keyMap = {
+                'alerta-violeta': 'alertavioleta',
+                'cava': 'lacavadelcorte',
+                'necrogest': 'necrogest',
+                'textilerp': 'textilerp',
+                'labs24k': 'labs24k',
+                'nexusplay': 'nexusplay',
+                'bonow': 'bonow',
+                'livex': 'livex',
+                'floralux': 'floralux',
+                'apexerp': 'apexerp',
+                'labs24k-franquicia': 'labs24k-franquicia'
+            };
+            const mapped = keyMap[key] || key;
+            openDossierModal(mapped);
+        }
+        window.openModal = openModal;
+
         function switchDossierProject(projectKey) {
             const viewLabs = document.getElementById('dossier-view-labs24k');
             const viewLabsFran = document.getElementById('dossier-view-labs24k-franquicia');
@@ -3342,6 +3547,16 @@
             if (e.target === modal) {
                 closeDossierModal();
             }
+        });
+
+        // Mobile Drawer Menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
         });
 
         
