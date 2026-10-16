@@ -1029,46 +1029,9 @@
         <div class="glass-panel rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 border border-indigo-500/40 shadow-2xl relative space-y-6 animate__animated animate__zoomIn">
             
             <!-- Modal Close Button -->
-            <button onclick="closeDossierModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all">
+            <button onclick="closeDossierModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition-all z-20">
                 <i class="fas fa-times"></i>
             </button>
-
-            <!-- Project Selector Header Tabs -->
-            <div class="project-selector-bar flex flex-nowrap sm:flex-wrap items-center gap-2 sm:gap-3 pb-3 border-b border-white/10 overflow-x-auto no-scrollbar scroll-smooth">
-                <button onclick="switchDossierProject('labs24k')" id="project-tab-labs24k" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                    <i class="fas fa-brain mr-1.5 text-cyan-400"></i> Labs24k (SaaS Multi-Agente)
-                </button>
-                <button onclick="switchDossierProject('labs24k-franquicia')" id="project-tab-labs24k-franquicia" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-crown mr-1.5 text-yellow-400"></i> Labs 24K (Franquicia IA )
-                </button>
-                <button onclick="switchDossierProject('nexusplay')" id="project-tab-nexusplay" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-gamepad mr-1.5 text-fuchsia-400"></i> NexusPlay (Phaser 3 & Ad-Tech)
-                </button>
-                <button onclick="switchDossierProject('alertavioleta')" id="project-tab-alertavioleta" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-heart-pulse mr-1.5"></i> Alerta Violeta (IA RAG Perú)
-                </button>
-                <button onclick="switchDossierProject('floralux')" id="project-tab-floralux" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-spa mr-1.5 text-rose-400"></i> Florería RossyFlowers (Perú )
-                </button>
-                <button onclick="switchDossierProject('livex')" id="project-tab-livex" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-play-circle mr-1.5"></i> LiveX (Streaming & PvP)
-                </button>
-                <button onclick="switchDossierProject('textilerp')" id="project-tab-textilerp" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-industry mr-1.5"></i> TextilERP (Manufactura)
-                </button>
-                <button onclick="switchDossierProject('necrogest')" id="project-tab-necrogest" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-cloud mr-1.5"></i> NecroGest (SaaS Recaudación)
-                </button>
-                <button onclick="switchDossierProject('lacavadelcorte')" id="project-tab-lacavadelcorte" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-utensils mr-1.5 text-amber-400"></i> La Cava del Corte (México )
-                </button>
-                <button onclick="switchDossierProject('apexerp')" id="project-tab-apexerp" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-cash-register mr-1.5 text-blue-400"></i> ApexERP Pro (POS & Cloud ERP)
-                </button>
-                <button onclick="switchDossierProject('bonow')" id="project-tab-bonow" class="shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10">
-                    <i class="fas fa-ticket-alt mr-1.5 text-violet-400"></i> BONOW (SaaS & Cupones México )
-                </button>
-            </div>
 
             <!-- ================= VIEW 0C: ALERTA VIOLETA IA & CRISIS RESPONSE DOSSIER ================= -->
             <div id="dossier-view-alertavioleta" class="hidden space-y-6">
@@ -3260,6 +3223,25 @@
         window.openModal = openModal;
 
         function switchDossierProject(projectKey) {
+            if (!projectKey) projectKey = 'labs24k';
+            let key = String(projectKey).toLowerCase().trim().replace(/^dossier-view-/, '').replace(/^project-tab-/, '');
+            
+            const keyMap = {
+                'alerta-violeta': 'alertavioleta',
+                'cava': 'lacavadelcorte',
+                'la-cava': 'lacavadelcorte',
+                'lacava': 'lacavadelcorte',
+                'rossy': 'floralux',
+                'rossyflowers': 'floralux',
+                'flora': 'floralux',
+                'sepeliocloud': 'necrogest',
+                'franquicia': 'labs24k-franquicia',
+                'labs-franquicia': 'labs24k-franquicia'
+            };
+            if (keyMap[key]) {
+                key = keyMap[key];
+            }
+
             const viewLabs = document.getElementById('dossier-view-labs24k');
             const viewLabsFran = document.getElementById('dossier-view-labs24k-franquicia');
             const viewNexus = document.getElementById('dossier-view-nexusplay');
@@ -3272,87 +3254,50 @@
             const viewNecro = document.getElementById('dossier-view-necrogest');
             const viewCava = document.getElementById('dossier-view-lacavadelcorte');
 
-            const tabLabs = document.getElementById('project-tab-labs24k');
-            const tabLabsFran = document.getElementById('project-tab-labs24k-franquicia');
-            const tabNexus = document.getElementById('project-tab-nexusplay');
-            const tabVioleta = document.getElementById('project-tab-alertavioleta');
-            const tabFlora = document.getElementById('project-tab-floralux');
-            const tabLiveX = document.getElementById('project-tab-livex');
-            const tabApex = document.getElementById('project-tab-apexerp');
-            const tabBonow = document.getElementById('project-tab-bonow');
-            const tabTextil = document.getElementById('project-tab-textilerp');
-            const tabNecro = document.getElementById('project-tab-necrogest');
-            const tabCava = document.getElementById('project-tab-lacavadelcorte');
+            // Hide all views first
+            [viewLabs, viewLabsFran, viewNexus, viewVioleta, viewFlora, viewLiveX, viewApex, viewBonow, viewTextil, viewNecro, viewCava].forEach(v => v?.classList.add('hidden'));
 
-            viewLabs?.classList.add('hidden');
-            viewLabsFran?.classList.add('hidden');
-            viewNexus?.classList.add('hidden');
-            viewVioleta?.classList.add('hidden');
-            viewFlora?.classList.add('hidden');
-            viewLiveX?.classList.add('hidden');
-            viewApex?.classList.add('hidden');
-            viewBonow?.classList.add('hidden');
-            viewTextil?.classList.add('hidden');
-            viewNecro?.classList.add('hidden');
-            viewCava?.classList.add('hidden');
-
-            if (tabLabs) tabLabs.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabLabsFran) tabLabsFran.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabNexus) tabNexus.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabVioleta) tabVioleta.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabFlora) tabFlora.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabLiveX) tabLiveX.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabApex) tabApex.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabBonow) tabBonow.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabTextil) tabTextil.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabNecro) tabNecro.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-            if (tabCava) tabCava.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10";
-
-            if (projectKey === 'labs24k') {
+            if (key === 'labs24k') {
                 viewLabs?.classList.remove('hidden');
-                if (tabLabs) tabLabs.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40";
                 showLabsTab('vision');
-            } else if (projectKey === 'labs24k-franquicia') {
+            } else if (key === 'labs24k-franquicia') {
                 viewLabsFran?.classList.remove('hidden');
-                if (tabLabsFran) tabLabsFran.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-yellow-500/20 text-yellow-300 border border-yellow-500/40";
                 showLabsFranchiseTab('vision');
-            } else if (projectKey === 'apexerp') {
+            } else if (key === 'apexerp') {
                 viewApex?.classList.remove('hidden');
-                if (tabApex) tabApex.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-blue-500/20 text-blue-300 border border-blue-500/40";
                 showApexTab('vision');
-            } else if (projectKey === 'bonow') {
+            } else if (key === 'bonow') {
                 viewBonow?.classList.remove('hidden');
-                if (tabBonow) tabBonow.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-violet-500/20 text-violet-300 border border-violet-500/40";
                 showBonowTab('vision');
-            } else if (projectKey === 'nexusplay') {
+            } else if (key === 'nexusplay') {
                 viewNexus?.classList.remove('hidden');
-                if (tabNexus) tabNexus.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/40";
                 showNexusTab('vision');
-            } else if (projectKey === 'alertavioleta') {
+            } else if (key === 'alertavioleta') {
                 viewVioleta?.classList.remove('hidden');
-                if (tabVioleta) tabVioleta.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-violet-500/20 text-violet-300 border border-violet-500/40";
                 showVioletaTab('vision');
-            } else if (projectKey === 'floralux') {
+            } else if (key === 'floralux') {
                 viewFlora?.classList.remove('hidden');
-                if (tabFlora) tabFlora.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-rose-500/20 text-rose-300 border border-rose-500/40";
                 showFloraTab('vision');
-            } else if (projectKey === 'livex') {
+            } else if (key === 'livex') {
                 viewLiveX?.classList.remove('hidden');
-                if (tabLiveX) tabLiveX.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-rose-500/20 text-rose-300 border border-rose-500/40";
                 showLiveXTab('vision');
-            } else if (projectKey === 'textilerp') {
+            } else if (key === 'textilerp') {
                 viewTextil?.classList.remove('hidden');
-                if (tabTextil) tabTextil.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
                 showTextilTab('vision');
-            } else if (projectKey === 'lacavadelcorte') {
+            } else if (key === 'lacavadelcorte') {
                 viewCava?.classList.remove('hidden');
-                if (tabCava) tabCava.className = "px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-500/20 text-amber-300 border border-amber-500/40";
                 showCavaTab('vision');
-            } else {
+            } else if (key === 'necrogest') {
                 viewNecro?.classList.remove('hidden');
-                if (tabNecro) tabNecro.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-purple-500/20 text-purple-300 border border-purple-500/40";
                 showNecroTab('vision');
+            } else {
+                viewLabs?.classList.remove('hidden');
+                showLabsTab('vision');
             }
+
+            // Scroll modal back to top smoothly so title is immediately visible
+            const modalDialog = document.querySelector('#dossier-modal > div');
+            if (modalDialog) modalDialog.scrollTop = 0;
         }
 
         function showBonowTab(tabName) {
