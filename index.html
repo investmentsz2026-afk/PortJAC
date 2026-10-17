@@ -1170,6 +1170,49 @@
                 font-size: 0.82rem !important;
             }
 
+            /* Bento About cards on mobile - 2 columns layout */
+            #sobre-mi .grid.grid-cols-2 {
+                gap: 0.65rem !important;
+            }
+            #sobre-mi .col-span-1.glass-panel {
+                padding: 0.85rem !important;
+            }
+            #sobre-mi .col-span-1 h4 {
+                font-size: 0.82rem !important;
+                line-height: 1.25 !important;
+            }
+            #sobre-mi .col-span-1 p {
+                font-size: 0.68rem !important;
+                line-height: 1.35 !important;
+            }
+
+            /* Tecnologías & Herramientas: 4 columns on mobile to reduce scrolling */
+            #tecnologias .glass-panel {
+                padding: 0.5rem 0.2rem !important;
+                min-height: 68px !important;
+                gap: 0.25rem !important;
+            }
+            #tecnologias .glass-panel i {
+                font-size: 1.25rem !important;
+            }
+            #tecnologias .glass-panel span {
+                font-size: 0.6rem !important;
+                line-height: 1.15 !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                word-break: break-word;
+            }
+
+            /* Galería de Desarrollos Recientes: 2 columns on mobile */
+            #projects-container {
+                gap: 0.65rem !important;
+            }
+            #projects-container .glass-panel {
+                border-radius: 1rem !important;
+            }
+
             /* Footer responsive padding & text */
             footer {
                 padding-top: 2.5rem !important;
@@ -1402,10 +1445,10 @@
             </div>
 
             <!-- Bento Grid Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-12 gap-3 sm:gap-6">
                 
                 <!-- Bento Card 1: Professional Bio (Big Card) -->
-                <div class="md:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 space-y-5 border-beam">
+                <div class="col-span-2 md:col-span-7 glass-panel rounded-3xl p-5 sm:p-8 space-y-4 sm:space-y-5 border-beam">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
                             <i class="fas fa-terminal"></i>
@@ -1443,7 +1486,7 @@
                 </div>
 
                 <!-- Bento Card 2: Contact & Download CV Quick Box -->
-                <div class="md:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <div class="col-span-2 md:col-span-5 glass-panel rounded-3xl p-5 sm:p-8 flex flex-col justify-between space-y-4 sm:space-y-6">
                     <div>
                         <div class="flex items-center gap-3 mb-4">
                             <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
@@ -1478,34 +1521,34 @@
                 </div>
 
                 <!-- Bento Card 3: Philosophy of Engineering -->
-                <div class="md:col-span-4 glass-panel rounded-3xl p-6 space-y-3">
-                    <div class="w-9 h-9 rounded-xl bg-yellow-500/20 border border-yellow-500/30 flex items-center justify-center text-yellow-400">
+                <div class="col-span-1 md:col-span-4 glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-2 sm:space-y-3">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-yellow-500/20 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-sm sm:text-base">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <h4 class="font-bold text-white font-heading text-base" data-i18n="about_philosophy">Filosofía de Trabajo</h4>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="about_philosophy_text">
+                    <h4 class="font-bold text-white font-heading text-xs sm:text-base" data-i18n="about_philosophy">Filosofía de Trabajo</h4>
+                    <p class="text-[11px] sm:text-sm text-slate-300 leading-snug sm:leading-relaxed" data-i18n="about_philosophy_text">
                         Desarrollo centrado en el valor: cada línea de código debe resolver problemas reales, ser testeable, mantenible y estar lista para escalar sin deuda técnica.
                     </p>
                 </div>
 
                 <!-- Bento Card 4: AI & Machine Learning Pipeline -->
-                <div class="md:col-span-4 glass-panel rounded-3xl p-6 space-y-3">
-                    <div class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                <div class="col-span-1 md:col-span-4 glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-2 sm:space-y-3">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-sm sm:text-base">
                         <i class="fas fa-microchip"></i>
                     </div>
-                    <h4 class="font-bold text-white font-heading text-base" data-i18n="about_ai_integration">Integración de IA</h4>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="about_ai_integration_desc">
+                    <h4 class="font-bold text-white font-heading text-xs sm:text-base" data-i18n="about_ai_integration">Integración de IA</h4>
+                    <p class="text-[11px] sm:text-sm text-slate-300 leading-snug sm:leading-relaxed" data-i18n="about_ai_integration_desc">
                         Implementación práctica de LLMs, modelos predictivos y pipelines de machine learning conectados con aplicaciones productivas en tiempo real.
                     </p>
                 </div>
 
                 <!-- Bento Card 5: Software Architecture & Best Practices -->
-                <div class="md:col-span-4 glass-panel rounded-3xl p-6 space-y-3">
-                    <div class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <div class="col-span-2 md:col-span-4 glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 space-y-2 sm:space-y-3">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-sm sm:text-base">
                         <i class="fas fa-cubes"></i>
                     </div>
-                    <h4 class="font-bold text-white font-heading text-base" data-i18n="about_software_architecture">Arquitectura Escalable</h4>
-                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="about_software_architecture_desc">
+                    <h4 class="font-bold text-white font-heading text-xs sm:text-base" data-i18n="about_software_architecture">Arquitectura Escalable</h4>
+                    <p class="text-[11px] sm:text-sm text-slate-300 leading-snug sm:leading-relaxed" data-i18n="about_software_architecture_desc">
                         Diseño de microservicios, bases de datos optimizadas, APIs RESTful seguras y código desacoplado siguiendo principios SOLID y Clean Architecture.
                     </p>
                 </div>
@@ -2191,7 +2234,7 @@
                         <i class="fas fa-cubes text-purple-400"></i>
                         <span data-i18n="tech_category_frameworks">Frameworks & Arquitecturas Modernas</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-cyan-500/50">
                             <i class="fab fa-react text-3xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">Next.js 15 / React 19</span>
@@ -2233,7 +2276,7 @@
                         <i class="fas fa-code text-cyan-400"></i>
                         <span data-i18n="tech_category_languages">Lenguajes de Programación</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-blue-500/50">
                             <i class="fab fa-js-square text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">TypeScript</span>
@@ -2275,7 +2318,7 @@
                         <i class="fas fa-user-shield text-rose-400"></i>
                         <span>Ciberseguridad, Linux & Hacking Ético</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-orange-500/50">
                             <i class="fab fa-linux text-3xl text-orange-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">Linux SysAdmin</span>
@@ -2317,7 +2360,7 @@
                         <i class="fas fa-brain text-emerald-400"></i>
                         <span data-i18n="tech_category_ai">Inteligencia Artificial, RAG & WebRTC Streaming</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-emerald-500/50">
                             <i class="fas fa-bolt text-3xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">Groq (Llama 3.3)</span>
@@ -2359,7 +2402,7 @@
                         <i class="fas fa-database text-yellow-400"></i>
                         <span data-i18n="tech_category_tools">Bases de Datos, Cloud & Infraestructura</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-blue-500/50">
                             <i class="fas fa-database text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">PostgreSQL Neon</span>
@@ -2401,7 +2444,7 @@
                         <i class="fas fa-cash-register text-emerald-400"></i>
                         <span>Pasarelas de Pago, SUNAT & Hardware POS</span>
                     </h3>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                    <div class="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                         <div class="glass-panel p-3.5 rounded-2xl flex flex-col items-center justify-center gap-2 text-center group hover:border-indigo-500/50">
                             <i class="fab fa-stripe text-3xl text-indigo-400 group-hover:scale-110 transition-transform"></i>
                             <span class="text-xs font-medium text-slate-200">Stripe MXN & SPEI</span>
@@ -2843,8 +2886,8 @@
                 <button class="project-filter px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all glass-panel text-slate-300 hover:text-white" data-filter="mobile" data-i18n="projects_mobile">Móvil</button>
             </div>
 
-            <!-- Compact Dynamic Project Cards Grid (3 Columns, 6 Cards) -->
-            <div id="projects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <!-- Compact Dynamic Project Cards Grid (2 Columns Mobile, 3 Columns Desktop) -->
+            <div id="projects-container" class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
                 <!-- Dynamically loaded via JavaScript -->
             </div>
 
@@ -5410,46 +5453,46 @@
                 }
 
                 const actionHtml = isDossier
-                    ? `<button onclick="openDossierModal('${p.dossierKey}')" class="w-full py-2.5 px-3 rounded-xl ${btnClass} text-xs font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
-                           <i class="fas fa-file-contract text-xs"></i>
+                    ? `<button onclick="openDossierModal('${p.dossierKey}')" class="w-full py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl ${btnClass} text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 sm:gap-1.5 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
+                           <i class="fas fa-file-contract text-[10px] sm:text-xs"></i>
                            <span>${btnText}</span>
                        </button>`
-                    : `<a href="${p.github}" target="_blank" rel="noopener" class="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 border border-white/10 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02]">
-                           <i class="fab fa-github text-xs"></i>
+                    : `<a href="${p.github}" target="_blank" rel="noopener" class="w-full py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl bg-white/5 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 border border-white/10 text-white text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all hover:scale-[1.02]">
+                           <i class="fab fa-github text-[10px] sm:text-xs"></i>
                            <span>${btnText}</span>
                        </a>`;
 
-                const visibleTechs = p.technologies.slice(0, 3);
-                const extraTechs = p.technologies.length > 3 ? p.technologies.length - 3 : 0;
+                const visibleTechs = p.technologies.slice(0, 2);
+                const extraTechs = p.technologies.length > 2 ? p.technologies.length - 2 : 0;
 
                 return `
                     <div class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-cyan-500/50 hover:shadow-neon-blue transition-all duration-300 ${isDossier ? borderClass : ''}">
                         <div>
                             <!-- Compact Image Overlay -->
-                            <div class="relative h-36 sm:h-40 overflow-hidden">
+                            <div class="relative h-28 sm:h-40 overflow-hidden">
                                 <img src="${p.image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                                <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md border border-white/20 text-cyan-400">
+                                <span class="absolute top-2 right-2 px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md border border-white/20 text-cyan-400">
                                     ${p.category.toUpperCase()}
                                 </span>
-                                ${isDossier ? `<span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold ${badgeClass} shadow-md">⭐ SaaS</span>` : ''}
+                                ${isDossier ? `<span class="absolute top-2 left-2 px-1.5 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[9px] font-mono font-bold ${badgeClass} shadow-md">⭐ SaaS</span>` : ''}
                             </div>
 
                             <!-- Compact Card Body -->
-                            <div class="p-4 sm:p-5 space-y-2">
-                                <h3 class="text-sm sm:text-base font-bold font-heading text-white group-hover:text-cyan-400 transition-colors line-clamp-1" title="${title}">${title}</h3>
-                                <p class="text-xs text-slate-300 leading-relaxed line-clamp-2">${desc}</p>
+                            <div class="p-2.5 sm:p-5 space-y-1 sm:space-y-2">
+                                <h3 class="text-xs sm:text-base font-bold font-heading text-white group-hover:text-cyan-400 transition-colors line-clamp-1" title="${title}">${title}</h3>
+                                <p class="text-[11px] sm:text-xs text-slate-300 leading-snug sm:leading-relaxed line-clamp-2">${desc}</p>
                                 
-                                <!-- Compact Tech Tags (Max 3 + Counter) -->
-                                <div class="flex flex-wrap items-center gap-1 pt-1.5">
-                                    ${visibleTechs.map(t => `<span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[10px] font-mono text-slate-300">${t}</span>`).join('')}
-                                    ${extraTechs > 0 ? `<span class="px-1.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-mono text-cyan-400 font-bold">+${extraTechs}</span>` : ''}
+                                <!-- Compact Tech Tags (2 tags + counter) -->
+                                <div class="flex flex-wrap items-center gap-1 pt-1">
+                                    ${visibleTechs.map(t => `<span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] sm:text-[10px] font-mono text-slate-300">${t}</span>`).join('')}
+                                    ${extraTechs > 0 ? `<span class="px-1 sm:px-1.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-[9px] sm:text-[10px] font-mono text-cyan-400 font-bold">+${extraTechs}</span>` : ''}
                                 </div>
                             </div>
                         </div>
 
                         <!-- Card Footer Action -->
-                        <div class="p-4 sm:p-5 pt-0">
+                        <div class="p-2.5 sm:p-5 pt-0">
                             ${actionHtml}
                         </div>
                     </div>

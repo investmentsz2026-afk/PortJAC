@@ -787,6 +787,14 @@
                 line-height: 1.2 !important;
             }
 
+            /* Catalog Grid on mobile: 2 columns */
+            #full-catalog-grid {
+                gap: 0.65rem !important;
+            }
+            #full-catalog-grid .glass-panel {
+                border-radius: 1rem !important;
+            }
+
             /* Footer responsive padding & text */
             footer {
                 padding-top: 2.5rem !important;
@@ -979,8 +987,8 @@
 
         <!-- ================= PROJECTS GRID CONTAINER ================= -->
         <section>
-            <!-- Dynamic Grid -->
-            <div id="full-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Dynamic Grid (2 Columns Mobile, 3 Columns Desktop) -->
+            <div id="full-catalog-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
                 <!-- Rendered dynamically by JavaScript -->
             </div>
 
@@ -3047,8 +3055,8 @@
                 const desc = currentLang === 'es' ? p.description : p.description_en;
                 const isDossier = p.isDossier;
                 const btnText = isDossier 
-                    ? (currentLang === 'es' ? 'Ver Ficha Técnica & Dossier' : 'View Technical Dossier')
-                    : (currentLang === 'es' ? 'Ver Código en GitHub' : 'View Code on GitHub');
+                    ? (currentLang === 'es' ? 'Ver Ficha & Dossier' : 'View Dossier')
+                    : (currentLang === 'es' ? 'Ver en GitHub' : 'GitHub Code');
 
                 let btnClass = 'bg-white/5 hover:bg-gradient-to-r hover:from-blue-600 hover:to-indigo-600 border border-white/10';
                 let badgeClass = 'bg-emerald-600';
@@ -3101,38 +3109,42 @@
                 }
 
                 const actionHtml = isDossier
-                    ? `<button onclick="openDossierModal('${p.dossierKey}')" class="w-full py-3 rounded-xl ${btnClass} text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
-                           <i class="fas fa-file-contract"></i>
+                    ? `<button onclick="openDossierModal('${p.dossierKey}')" class="w-full py-2 sm:py-3 px-2 rounded-xl ${btnClass} text-[10px] sm:text-sm font-bold flex items-center justify-center gap-1 sm:gap-2 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
+                           <i class="fas fa-file-contract text-[10px] sm:text-xs"></i>
                            <span>${btnText}</span>
                        </button>`
-                    : `<a href="${p.github || 'https://github.com/Jhosep2408'}" target="_blank" rel="noopener" class="w-full py-3 rounded-xl ${btnClass} text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all hover:scale-[1.02]">
-                           <i class="fab fa-github"></i>
+                    : `<a href="${p.github || 'https://github.com/Jhosep2408'}" target="_blank" rel="noopener" class="w-full py-2 sm:py-3 px-2 rounded-xl ${btnClass} text-white text-[10px] sm:text-sm font-semibold flex items-center justify-center gap-1 sm:gap-2 transition-all hover:scale-[1.02]">
+                           <i class="fab fa-github text-[10px] sm:text-xs"></i>
                            <span>${btnText}</span>
                        </a>`;
 
+                const visibleTechs = p.technologies.slice(0, 2);
+                const extraTechs = p.technologies.length > 2 ? p.technologies.length - 2 : 0;
+
                 return `
-                    <div class="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between group hover:border-cyan-500/50 transition-all duration-300 ${borderClass}" data-aos="fade-up">
+                    <div class="glass-panel rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group hover:border-cyan-500/50 transition-all duration-300 ${borderClass}" data-aos="fade-up">
                         <div>
-                            <div class="relative h-52 sm:h-56 overflow-hidden">
+                            <div class="relative h-28 sm:h-56 overflow-hidden">
                                 <img src="${p.image}" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
-                                <span class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md border border-white/20 text-cyan-400">
+                                <span class="absolute top-2 right-2 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md border border-white/20 text-cyan-400">
                                     ${p.category.toUpperCase()}
                                 </span>
-                                ${isDossier ? `<span class="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold ${badgeClass} text-white shadow-md"><i class="fas fa-star text-amber-400 mr-1"></i> ${p.status || 'Producción'}</span>` : ''}
+                                ${isDossier ? `<span class="absolute top-2 left-2 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-mono font-bold ${badgeClass} text-white shadow-md"><i class="fas fa-star text-amber-400 mr-0.5"></i> ${p.status || 'Producción'}</span>` : ''}
                             </div>
 
-                            <div class="p-6 space-y-3">
-                                <h3 class="text-lg font-bold font-heading text-white group-hover:text-cyan-400 transition-colors">${title}</h3>
-                                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${desc}</p>
+                            <div class="p-2.5 sm:p-6 space-y-1 sm:space-y-3">
+                                <h3 class="text-xs sm:text-lg font-bold font-heading text-white group-hover:text-cyan-400 transition-colors line-clamp-1" title="${title}">${title}</h3>
+                                <p class="text-[11px] sm:text-sm text-slate-300 leading-snug sm:leading-relaxed line-clamp-2">${desc}</p>
                                 
-                                <div class="flex flex-wrap gap-1.5 pt-2">
-                                    ${p.technologies.map(t => `<span class="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[11px] font-mono text-slate-300">${t}</span>`).join('')}
+                                <div class="flex flex-wrap items-center gap-1 pt-1 sm:pt-2">
+                                    ${visibleTechs.map(t => `<span class="px-1.5 sm:px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] sm:text-[11px] font-mono text-slate-300">${t}</span>`).join('')}
+                                    ${extraTechs > 0 ? `<span class="px-1 sm:px-1.5 py-0.5 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-[9px] sm:text-[11px] font-mono text-cyan-400 font-bold">+${extraTechs}</span>` : ''}
                                 </div>
                             </div>
                         </div>
 
-                        <div class="p-6 pt-0">
+                        <div class="p-2.5 sm:p-6 pt-0">
                             ${actionHtml}
                         </div>
                     </div>
